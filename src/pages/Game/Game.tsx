@@ -1,14 +1,30 @@
+import GameHole from "../../components/GameHole";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Game.scss";
 function Game() {
   return (
     <main className="game">
-      <header className="game-header">
+      <header>
         <h1> Game</h1>
         <Link to="/">Home </Link>
       </header>
-      <body className="game-body"></body>
+      <body>
+        <div className="game-background">
+          <GameHole imgURL="" />
+          <GameHole imgURL="" />
+          <GameHole imgURL="" />
+          <GameHole imgURL="" />
+          <GameHole imgURL="" />
+          <GameHole imgURL="" />
+          <GameHole imgURL="" />
+          <GameHole imgURL="" />
+          <GameHole imgURL="" />
+          <GameHole imgURL="" />
+          <GameHole imgURL="" />
+          <GameHole imgURL="" />
+        </div>
+      </body>
     </main>
   );
 }

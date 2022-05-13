@@ -7,3 +7,5 @@ for me to create a game, more specifically an adaptation of the popular game « 
 The assets of the game will be provided by them.
 The concept of the game is simple. There are a total of 12 moles structured into 3 rows of each 4
 moles. It’s up to the player to score points by whacking the moles when they pop up.
+
+made by : Honore Pacifique Bayisenge

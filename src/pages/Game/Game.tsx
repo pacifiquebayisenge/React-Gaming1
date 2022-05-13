@@ -1,54 +1,68 @@
 import GameHole from "../../components/GameHole";
-import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Game.scss";
 
 import { useDispatch, useSelector } from "react-redux";
-import { timerStart } from "../../actions";
+import Timer from "../../components/Timer";
+import { startTimer, stopTimer, tick } from "../../actions";
+import { useEffect } from "react";
 
 function Game() {
   const dispatch = useDispatch();
-  const timer = useSelector((state: any) => state.timer);
-  let stateArr = [false, true];
 
-  let holes = document.getElementsByClassName("game-hole-empty");
+  // score
+  const counter = useSelector((state: any) => state.counter);
 
+  // boolean to kdisplay or hide the mole
+  const isHidden = () => {
+    const stateArr = [false, true];
+
+    // random number between 0 and 1
+    let rdmNr: number = Math.floor(Math.random() * (1 - 0 + 1) + 0);
+
+    // return true or false on the basis of the random number
+    return stateArr[rdmNr];
+  };
+  let e = "edddd";
+  const setTimer = () => {
+    const interval = setInterval(() => {
+      console.log(e);
+      dispatch(tick());
+    }, 1000);
+
+    dispatch(startTimer(interval));
+  };
   useEffect(() => {
-    holes = document.getElementsByClassName("game-hole-empty");
+    e = e + "bbb";
   });
 
-  const rdmHide = () => {
-    let rdmNr: number;
-
-    rdmNr = Math.floor(Math.random() * (1 - 0 + 1) + 0);
-
-    //let rdmPos = holes[rdmNr];
-    console.log(rdmNr);
-    return rdmNr;
+  const stop = () => {
+    dispatch(stopTimer());
   };
 
   return (
     <div className="game">
       <header>
-        <h1> Game</h1>
+        <h1 onClick={stop}> {e} Game</h1>
         <Link to="/">Home </Link>
 
-        <h2>Timer: {timer}</h2>
+        <Timer />
+        <h2>Score: {counter}</h2>
       </header>
-      <div className="game-body">
+      <div className="game-body" onClick={setTimer}>
         <div className="game-background">
-          <GameHole isEmpty={stateArr[rdmHide()]} />
-          <GameHole isEmpty={stateArr[rdmHide()]} />
-          <GameHole isEmpty={stateArr[rdmHide()]} />
-          <GameHole isEmpty={stateArr[rdmHide()]} />
-          <GameHole isEmpty={stateArr[rdmHide()]} />
-          <GameHole isEmpty={stateArr[rdmHide()]} />
-          <GameHole isEmpty={stateArr[rdmHide()]} />
-          <GameHole isEmpty={stateArr[rdmHide()]} />
-          <GameHole isEmpty={stateArr[rdmHide()]} />
-          <GameHole isEmpty={stateArr[rdmHide()]} />
-          <GameHole isEmpty={stateArr[rdmHide()]} />
-          <GameHole isEmpty={stateArr[rdmHide()]} />
+          <GameHole isEmpty={isHidden()} />
+          <GameHole isEmpty={isHidden()} />
+          <GameHole isEmpty={isHidden()} />
+          <GameHole isEmpty={isHidden()} />
+          <GameHole isEmpty={isHidden()} />
+          <GameHole isEmpty={isHidden()} />
+          <GameHole isEmpty={isHidden()} />
+          <GameHole isEmpty={isHidden()} />
+          <GameHole isEmpty={isHidden()} />
+          <GameHole isEmpty={isHidden()} />
+          <GameHole isEmpty={isHidden()} />
+          <GameHole isEmpty={isHidden()} />
         </div>
       </div>
     </div>

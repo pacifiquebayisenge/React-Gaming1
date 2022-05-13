@@ -4,8 +4,20 @@ export const increment = () => {
   };
 };
 
-export const timerStart = () => {
+export const tick = () => {
   return {
-    type: "Timer_Start",
+    type: "TICK",
   };
+};
+
+export const startTimer = (interval: NodeJS.Timer) => {
+  return {
+    type: "START_TIMER",
+
+    interval: interval,
+  };
+};
+
+export const stopTimer = () => {
+  return { type: "STOP_TIMER" };
 };

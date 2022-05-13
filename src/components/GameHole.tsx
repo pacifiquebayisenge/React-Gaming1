@@ -2,6 +2,7 @@ import React, { Ref, RefObject } from "react";
 import { useDispatch } from "react-redux";
 import { increment } from "../actions";
 
+// boolean isEmpty will indicate which mole element to show: hidden or not
 const GameHole = ({ isEmpty }: { isEmpty: Boolean }) => {
   const dispatch = useDispatch();
 

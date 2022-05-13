@@ -13,11 +13,12 @@
     }
   }
 
-  body {
+  &-body {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
   }
 
   &-background {
@@ -25,9 +26,9 @@
     border-radius: 30px;
     background-image: url("../../assets/WAM_bg.jpg");
     background-repeat: no-repeat;
-    background-size: contain;
-    height: 46vh;
-    width: 95%;
+    background-size: cover;
+    height: 50vh;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -37,12 +38,21 @@
     justify-content: center;
     align-items: center;
 
-    &-image {
+    &-empty {
       background-image: url("../../assets/WAM_Hole.png");
       background-repeat: no-repeat;
       background-size: contain;
       height: 6vh;
-      width: 75%;
+      width: 15vw;
+    }
+    &-mole {
+      cursor: pointer;
+      margin: 0;
+      background-image: url("../../assets/WAM_Mole.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 9vh;
+      width: 15vw;
     }
   }
 }

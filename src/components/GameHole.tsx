@@ -1,13 +1,20 @@
-import React from "react";
+import React, { Ref, RefObject } from "react";
+import { useDispatch } from "react-redux";
+import { increment } from "../actions";
 
-interface GameHoleProps {
-  imgURL: string;
-}
+const GameHole = ({ isEmpty }: { isEmpty: Boolean }) => {
+  const dispatch = useDispatch();
 
-const GameHole = (props: GameHoleProps) => {
   return (
     <div className="game-hole">
-      <img src={props.imgURL} alt="" />
+      {isEmpty ? (
+        <div className="game-hole-empty"></div>
+      ) : (
+        <div
+          className="game-hole-mole"
+          onClick={() => dispatch(increment())}
+        ></div>
+      )}
     </div>
   );
 };

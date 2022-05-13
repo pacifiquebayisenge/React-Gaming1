@@ -4,13 +4,13 @@ import "./About.scss";
 
 function About() {
   return (
-    <main className="about">
+    <div className="about">
       <header className="about-header">
         <h1> About</h1>
         <Link to="/">Home </Link>
       </header>
-      <body className="about-body"></body>
-    </main>
+      <div className="about-body"></div>
+    </div>
   );
 }
 

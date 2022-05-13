@@ -4,17 +4,17 @@ import "./Home.scss";
 
 const Home = () => {
   return (
-    <main className="home">
+    <div className="home">
       <header className="home-header">
         <h1> Whack a Mole</h1>
       </header>
-      <body>
+      <div className=" home-body">
         <nav className="home-nav">
           <Link to="/game">Game </Link>
           <Link to="/about">About </Link>
         </nav>
-      </body>
-    </main>
+      </div>
+    </div>
   );
 };
 

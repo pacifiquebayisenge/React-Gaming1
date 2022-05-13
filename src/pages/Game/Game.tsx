@@ -2,16 +2,20 @@ import GameHole from "../../components/GameHole";
 import { Link } from "react-router-dom";
 import "./Game.scss";
 
-import { useDispatch, useSelector } from "react-redux";
+import { batch, useDispatch, useSelector } from "react-redux";
 import Timer from "../../components/Timer";
-import { startTimer, stopTimer, tick } from "../../actions";
-import { useEffect } from "react";
+import { startTimer, stopGame, stopTimer, tick } from "../../actions";
+import { ReducerState, useEffect } from "react";
+import { stat } from "fs";
+import { Reducer } from "redux";
 
 function Game() {
   const dispatch = useDispatch();
 
   // score
-  const counter = useSelector((state: any) => state.counter);
+  const gameObj = useSelector((state: any) => state.game);
+
+  //const time = useSelector((state: any) => state.game.time);
 
   // boolean to kdisplay or hide the mole
   const isHidden = () => {
@@ -23,33 +27,27 @@ function Game() {
     // return true or false on the basis of the random number
     return stateArr[rdmNr];
   };
-  let e = "edddd";
+
   const setTimer = () => {
     const interval = setInterval(() => {
-      console.log(e);
       dispatch(tick());
     }, 1000);
 
     dispatch(startTimer(interval));
   };
-  useEffect(() => {
-    e = e + "bbb";
-  });
-
-  const stop = () => {
-    dispatch(stopTimer());
-  };
 
   return (
     <div className="game">
       <header>
-        <h1 onClick={stop}> {e} Game</h1>
+        <h1> Game</h1>
         <Link to="/">Home </Link>
 
-        <Timer />
-        <h2>Score: {counter}</h2>
+        <Timer timerObj={gameObj.time} highscore={gameObj.highscore} />
+        <h2>Score: {gameObj.score}</h2>
+
+        <button onClick={() => setTimer()}>start</button>
       </header>
-      <div className="game-body" onClick={setTimer}>
+      <div className="game-body">
         <div className="game-background">
           <GameHole isEmpty={isHidden()} />
           <GameHole isEmpty={isHidden()} />

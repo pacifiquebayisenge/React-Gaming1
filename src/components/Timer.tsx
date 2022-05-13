@@ -1,26 +1,30 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { tick, startTimer, stopTimer } from "../actions";
+import React, { useEffect } from "react";
+import { batch, useDispatch, useSelector } from "react-redux";
+import { tick, startTimer, stopTimer, stopGame } from "../actions";
 
-const Timer = () => {
+const Timer = ({ timerObj, highscore }: any) => {
   const dispatch = useDispatch();
-  const timer = useSelector((state: any) => state.timer);
+  const timer = timerObj;
 
-  const setTimer = () => {
-    const interval = setInterval(() => {
-      dispatch(tick());
-    }, 1000);
-
-    dispatch(startTimer(interval));
+  const gameOver = () => {
+    batch(() => {
+      dispatch(stopTimer());
+      dispatch(stopGame());
+    });
+    console.log(highscore);
   };
 
-  const stop = () => {
-    dispatch(stopTimer());
+  const stopTime = () => {
+    if (timer === 0) gameOver();
   };
+
+  useEffect(() => {
+    stopTime();
+  });
 
   return (
     <div>
-      <h2>Timer: {timer.time}</h2>
+      <h2>Timer: {timer}</h2>
     </div>
   );
 };

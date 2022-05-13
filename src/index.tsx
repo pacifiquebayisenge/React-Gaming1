@@ -11,6 +11,7 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
+// redux store
 const myStore = createStore(gameReducer);
 
 root.render(

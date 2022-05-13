@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { increment } from "../actions";
 
 // boolean isEmpty will indicate which mole element to show: hidden or not
+// each time a mole is hit , increment action will be dispatched
 const GameHole = ({ isEmpty }: { isEmpty: Boolean }) => {
   const dispatch = useDispatch();
 

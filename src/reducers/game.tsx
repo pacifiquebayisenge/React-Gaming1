@@ -25,7 +25,7 @@ const initialState: initStateFace = {
 
   highscore: 0,
   timerStarted: false,
-  time: 10,
+  time: 30,
   interval: undefined,
   score: 0,
 };
@@ -93,7 +93,6 @@ const gameReducer = (
         ...state,
 
         // put current time back to 30 seconds
-
         time: 30,
 
         // clear the setInterval method holder

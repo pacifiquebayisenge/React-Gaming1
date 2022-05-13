@@ -2,9 +2,9 @@ import GameHole from "../../components/GameHole";
 import { Link } from "react-router-dom";
 import "./Game.scss";
 
-import { useDispatch, useSelector } from "react-redux";
+import { batch, useDispatch, useSelector } from "react-redux";
 import Timer from "../../components/Timer";
-import { startTimer, tick } from "../../actions";
+import { startTimer, stopGame, stopTimer, tick } from "../../actions";
 
 function Game() {
   const dispatch = useDispatch();
@@ -42,13 +42,29 @@ function Game() {
         <Timer timerObj={gameObj.time} />
         <h2>Score: {gameObj.score}</h2>
 
-        <button
-          onClick={() => {
-            setTimer();
-          }}
-        >
-          start
-        </button>
+        <div className="btn-container">
+          <button
+            onClick={() => {
+              setTimer();
+            }}
+          >
+            Start
+          </button>
+          <button
+            onClick={() => {
+              dispatch(stopTimer());
+            }}
+          >
+            Stop
+          </button>
+          <button
+            onClick={() => {
+              dispatch(stopGame());
+            }}
+          >
+            Reset
+          </button>
+        </div>
       </header>
       <div className="game-body">
         <div className="game-background">

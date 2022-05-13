@@ -14,6 +14,7 @@ const Home = () => {
           <Link to="/game">Game </Link>
           <Link to="/about">About </Link>
         </nav>
+        <div className="container"></div>
       </div>
     </div>
   );

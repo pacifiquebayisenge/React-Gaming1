@@ -59,6 +59,9 @@ const gameReducer = (
 
     // when the game stops
     case "STOP_GAME":
+      // clear given interval to stop the countdown
+      clearInterval(state.interval);
+
       // get new highscore if new highscore is reached
       if (state.score > state.highscore) state.highscore = state.score;
 
@@ -91,12 +94,6 @@ const gameReducer = (
       return {
         // copy current state props
         ...state,
-
-        // put current time back to 30 seconds
-        time: 30,
-
-        // clear the setInterval method holder
-        interval: undefined,
       };
 
     // for each count of the timer countdown

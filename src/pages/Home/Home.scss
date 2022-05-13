@@ -19,6 +19,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    &-container {
+      background-color: rgb(98, 108, 128);
+      padding: 5rem;
+      border-radius: 15px;
+
+      h3 {
+        color: rgb(255, 179, 0);
+      }
+      p {
+        font-size: 1rem;
+      }
+      &-lastPlayers {
+      }
+    }
   }
 
   &-nav {
@@ -27,7 +41,18 @@
     align-items: center;
     & > a {
       margin: 2rem;
+      padding: 1rem;
+      border-radius: 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bolder;
+      font-size: 2rem;
       width: max-content;
+      background-color: rgb(98, 108, 128);
+    }
+    & > a:hover {
+      cursor: pointer;
+      background-color: rgb(114, 126, 153);
     }
   }
 }

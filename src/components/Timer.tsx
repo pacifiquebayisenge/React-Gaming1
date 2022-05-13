@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { batch, useDispatch, useSelector } from "react-redux";
-import { tick, startTimer, stopTimer, stopGame } from "../actions";
+import { useEffect } from "react";
+import { batch, useDispatch } from "react-redux";
+import { stopTimer, stopGame } from "../actions";
 
-const Timer = ({ timerObj, highscore }: any) => {
+const Timer = ({ timerObj }: any) => {
   const dispatch = useDispatch();
   const timer = timerObj;
 
@@ -11,7 +11,6 @@ const Timer = ({ timerObj, highscore }: any) => {
       dispatch(stopTimer());
       dispatch(stopGame());
     });
-    console.log(highscore);
   };
 
   const stopTime = () => {

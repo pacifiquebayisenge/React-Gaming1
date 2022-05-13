@@ -12,20 +12,16 @@ import { Reducer } from "redux";
 function Game() {
   const dispatch = useDispatch();
 
-  // score
+  // game object from game reducer
   const gameObj = useSelector((state: any) => state.game);
 
-  //const time = useSelector((state: any) => state.game.time);
-
-  // boolean to kdisplay or hide the mole
+  // boolean to display or hide the mole
   const isHidden = () => {
-    const stateArr = [false, true];
-
-    // random number between 0 and 1
-    let rdmNr: number = Math.floor(Math.random() * (1 - 0 + 1) + 0);
-
+    // random number between 0 and 10
+    let rdmNr: number = Math.floor(Math.random() * 10);
+    if (rdmNr === 1 || rdmNr === 9) return false;
+    return true;
     // return true or false on the basis of the random number
-    return stateArr[rdmNr];
   };
 
   const setTimer = () => {
